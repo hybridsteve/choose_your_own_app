@@ -6,11 +6,19 @@ App.Views.Question = Backbone.View.extend({
 		"click .voteup": "upVote",
 		"click .votedown": "downVote"
 	},
+	initialize: function() {
+		App.currentUser.on("change", this.render, this);
+	},
 	render: function() {
 		var data = this.model.toJSON();
 		data.tally = this.model.voteTally();
 
 		this.$el.html(this.template(data));
+
+		var userName = App.currentUser.get("userName");
+		this.$(".voteup").toggleClass("selected", this.model.didUserVoteUp(userName));
+		this.$(".votedown").toggleClass("selected", this.model.didUserVoteDown(userName));
+
 		return this;
 	},
 	upVote: function() {
