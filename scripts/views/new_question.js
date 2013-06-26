@@ -19,7 +19,7 @@ App.Views.NewQuestion = Backbone.View.extend({
 			userName: App.currentUser.get("userName")
 		};
 
-		this.model.add(new App.Models.Question(question));
+		this.model.create(question);
 		this.$("#newQuestion").val("");
 	}
 });

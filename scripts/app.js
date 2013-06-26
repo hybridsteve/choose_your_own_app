@@ -16,4 +16,7 @@ $(function() {
 		el: $("#questions"),
 		model: questions
 	});
+
+	// get data
+	questions.fetch();
 });
