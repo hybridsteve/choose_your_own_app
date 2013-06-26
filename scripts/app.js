@@ -12,4 +12,8 @@ $(function() {
 		el: $("#newQuestionView"),
 		model: questions
 	});
+	var questionView = new App.Views.Questions({
+		el: $("#questions"),
+		model: questions
+	});
 });
